@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="formstyle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <img src="ART-1382-3-64a59cdb761a4__700.jpg" alt="image" />
+      <div class="form">
+        <div class="text">
+          <h2>
+            This is a placeholder for a text which I'll be fixing later. The
+            text is related to a form which I'll be creating completely by
+            myself. I will continue to write this text once I've designed a
+            structure for this website/form.
+          </h2>
+        </div>
+        <form>
+          <fieldset>
+            <div class="inputs">
+              <div class="left">
+                <p class="firstname">
+                  <label for="firstname"
+                    >FIRST NAME <span aria-label="required">*</span></label
+                  >
+                  <input
+                    type="text"
+                    name="firstname"
+                    id="firstname"
+                    oninvalid="handleInvalidInput(this, 'name-error', 'Name is required')"
+                    oninput="clearError('name-error')"
+                    required
+                  />
+                  <span id="name-error"></span>
+                </p>
+
+                <p class="email">
+                  <label for="email"
+                    >EMAIL <span aria-label="required">*</span></label
+                  >
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="asdasd@email.com"
+                    oninvalid=""
+                    oninput="clearError('email-error')"
+                    required
+                  />
+
+                  <span id="email-error"></span>
+                </p>
+
+                <p class="password">
+                  <label for="password"
+                    >PASSWORD <span aria-label="required">*</span></label
+                  >
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    minlength="6"
+                    oninvalid=""
+                    oninput="clearError('password-error')"
+                    required
+                  />
+
+                  <span id="password-error"></span>
+                </p>
+              </div>
+              <div class="right">
+                <p class="lastname">
+                  <label for="lastname"
+                    >LAST NAME <span aria-label="required">*</span></label
+                  >
+                  <input
+                    type="text"
+                    name="lastname"
+                    id="lastname"
+                    oninvalid="handleInvalidInput(this, 'lastname-error', 'Name is required')"
+                    oninput="clearError('lastname-error')"
+                    required
+                  />
+
+                  <span id="lastname-error"></span>
+                </p>
+                <p class="tel">
+                  <label for="tel">PHONE NUMBER</label>
+                  <input
+                    type="tel"
+                    name="tel"
+                    id="tel"
+                    placeholder="+491 321 3213"
+                    pattern="[0-9]{3}-?[0-9]{3}-?[0-9]{4}"
+                    oninvalid="handleInvalidInput(this, 'number-error', 'A real phone number is required')"
+                    oninput="clearError('number-error')"
+                  />
+
+                  <span id="number-error"></span>
+                </p>
+                <p class="cnfpassword">
+                  <label for="cnfpassword"
+                    >CONFIRM PASSWORD
+                    <span aria-label="required">*</span></label
+                  >
+                  <input
+                    type="password"
+                    name="cnfpassword"
+                    id="cnfpassword"
+                    minlength="6"
+                    oninvalid=""
+                    oninput="clearError('cnfpassword-error')"
+                    required
+                  />
+
+                  <span id="cnfpassword-error"></span>
+                </p>
+              </div>
+            </div>
+            <div class="confirms">
+              <ul>
+                <li>
+                  <label for="agree"
+                    >AGREE TO TERMS <span aria-label="required">*</span></label
+                  >
+                  <input type="checkbox" name="agree" id="agree" required />
+                </li>
+                <li>
+                  <label for="signup">SIGN UP FOR NEWSLETTER</label>
+                  <input type="checkbox" name="signup" id="signup" />
+                </li>
+              </ul>
+              <button type="submit" id="btn">Create Account</button>
+              <div class="login">
+                <p class="already">Already have an account? <a>Log in</a></p>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+      <footer>
+        <p>This is a footer to my first ever, self-made form. Made by Robin</p>
+      </footer>
+    </div>
+    <script>
+      const button = document.getElementById("btn");
+
+      const password = document.querySelector("input[name=password]");
+      const confirmPassword = document.querySelector("input[name=cnfpassword]");
+
+      const inputs = document.querySelectorAll(
+        "input[type='text'], input[type='email']"
+      );
+
+      const inputFields = document.querySelectorAll("input[required]");
+
+      const inputsValid = document.querySelectorAll("input:invalid");
+
+      const registerClick = () => {
+        if (
+          confirmPassword.value === password.value &&
+          password.value.length >= 6
+        ) {
+          password.style.border = "1px solid green";
+          confirmPassword.style.border = "1px solid green";
+        } else if (confirmPassword.value !== password.value) {
+          password.style.border = "1.5px solid rgba(208, 89, 89, 0.571)";
+          confirmPassword.style.border = "1.5px solid rgba(208, 89, 89, 0.571)";
+          setError("cnfpassword-error", "Passwords do not match");
+          setError("password-error", "Passwords do not match");
+        } else {
+          password.style.border = "1.5px solid rgba(208, 89, 89, 0.571)";
+          confirmPassword.style.border = "1.5px solid rgba(208, 89, 89, 0.571)";
+          setError("cnfpassword-error", "Please enter a valid password");
+          setError("password-error", "Please enter a valid password");
+        }
+      };
+
+      const checkbox = document.querySelector("input[name=agree]");
+
+      const buttonchecker = () => {
+        if (!checkbox.checked) {
+          checkbox.style.border = "1.5px solid rgba(208, 89, 89, 0.571)";
+        } else {
+          checkbox.style.border = "1px solid green";
+        }
+      };
+
+      //-------------------------------------v Errors v-------------------------------------------//
+
+      function handleInvalidInput(input, errorId, errorMessage) {
+        if (input.validity.valueMissing) {
+          setError(errorId, errorMessage);
+        } else if (input.validity.typeMismatch) {
+          setError(errorId, "Please enter a valid input");
+        }
+      }
+
+      function clearError(errorId) {
+        setError(errorId, "");
+      }
+
+      function setError(errorId, errorMessage) {
+        let errorSpan = document.getElementById(errorId);
+        errorSpan.textContent = errorMessage;
+      }
+
+      //-------------------------------------v Errors v-------------------------------------------//
+
+      const email = document.querySelector("input[name=email]");
+
+      const emailClick = () => {
+        const emailValue = email.value.trim();
+        const isLongEnough = /^[\w.%+-]{3,}@+[a-zA-Z.-]+\.[a-zA-Z]{2,}$/.test(
+          emailValue
+        );
+
+        if (isLongEnough) {
+          email.style.border = "1px solid green";
+        } else {
+          setError("email-error", "Please enter a valid email");
+          email.style.border = "1.5px solid rgba(208, 89, 89, 0.571)";
+        }
+      };
+
+      //-------------------------------------v Execute v-------------------------------------------//
+
+      inputs.forEach((input) => {
+        input.addEventListener("input", () => {
+          if (input.validity.valid) {
+            input.style.border = "1px solid green";
+          } else {
+            input.style.border = "1.5px solid rgba(208, 89, 89, 0.571)";
+          }
+        });
+      });
+
+      button.addEventListener("click", () => {
+        buttonchecker();
+        registerClick();
+        emailClick();
+        inputs.forEach((input) => {
+          if (input.validity.valid) {
+            input.style.border = "1px solid green";
+          } else {
+            input.style.border = "1.5px solid rgba(208, 89, 89, 0.571)";
+          }
+        });
+      });
+
+      checkbox.addEventListener("change", () => {
+        if (checkbox.checked) {
+          checkbox.style.border = "1px solid green";
+        }
+      });
+    </script>
+  </body>
+</html>

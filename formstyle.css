@@ -1,0 +1,430 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/*
+    2. Remove default margin
+  */
+* {
+  margin: 0;
+}
+/*
+    Typographic tweaks!
+    3. Add accessible line-height
+    4. Improve text rendering
+  */
+body {
+  margin: 0;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  background-color: rgba(158, 157, 193, 0.133);
+  height: 100vh;
+  font-family: "Inter Tight", serif;
+}
+/*
+    5. Improve media defaults
+  */
+img,
+picture,
+video,
+canvas,
+svg,
+form,
+input {
+  display: initial;
+  margin: 0;
+}
+/*
+    6. Remove built-in form typography styles
+  */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/*
+    7. Avoid text overflows
+  */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+/*
+    8. Create a root stacking context
+  */
+#root,
+#__next {
+  isolation: isolate;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  display: flex; /* checkboxes left side */
+  font-size: 12px;
+}
+
+ul {
+  float: left;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+
+  margin-top: -20px;
+  width: calc(50vw);
+}
+
+img {
+  width: calc(46vw);
+  height: 100vh;
+  object-fit: cover;
+
+  background-color: black;
+  padding: 0;
+  margin: 0;
+}
+
+.text {
+  width: 500px;
+  padding: 20px;
+}
+
+.inputs {
+  display: flex;
+
+  background-color: rgba(42, 44, 45, 0.022);
+  box-shadow: 0.3em 0.3em 1em rgba(144, 143, 165, 0.6);
+
+  height: 195px;
+  width: calc(54vw);
+
+  font-size: small;
+
+  box-sizing: border-box;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"] {
+  min-width: 70%;
+  width: 100%;
+  height: 25px;
+  padding: 3px;
+
+  background-color: rgba(45, 42, 42, 0);
+  border: 1px solid rgba(4, 4, 4, 0.571);
+  border-radius: 3px;
+}
+
+.inputs p {
+  margin-top: 2px;
+  margin-bottom: 20px;
+  width: 230px;
+}
+
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="password"]:hover,
+input[type="tel"]:hover {
+  border-radius: 5px;
+  border: 1px solid black;
+  box-shadow: 0.1em 0.1em 0.02em rgba(144, 143, 165, 0.6);
+}
+
+.login {
+  color: rgb(83, 75, 75);
+}
+
+a {
+  color: rgb(11, 11, 11);
+  font-weight: 600;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+  outline: none;
+  border: 1px solid black;
+  transform: translate(1.4px, 1.4px) scale(1);
+  transform-origin: center;
+  transition: all 0.1s ease-in;
+  box-shadow: 0.2em 0.2em 0.02em rgba(144, 143, 165, 0.6);
+  background-color: rgba(255, 255, 255, 0.41);
+}
+
+input[type="text"]:before,
+input[type="tel"]:before,
+input[type="password"]:before,
+input[type="email"]:before {
+  box-shadow: 0.3em 0.3em 0.1e;
+  transform: translate(0.5px, 0.5px) scale(1);
+}
+
+.confirms {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+button {
+  width: 200px;
+  height: 40px;
+
+  margin-top: 10px;
+  margin-left: -10px;
+  border: none;
+
+  color: white;
+  background-color: rgb(27, 31, 35);
+  border-radius: 3px;
+}
+
+button:hover {
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: rgb(45, 52, 58);
+  transition: all 0.3s ease-in;
+}
+
+button:active {
+  cursor: pointer;
+  background-color: rgba(15, 16, 17, 0.714);
+  transition: all 0.1s;
+}
+
+.already {
+  margin-left: -10px;
+}
+
+a {
+  background: linear-gradient(
+      to right,
+      rgba(158, 157, 193, 0),
+      rgba(158, 157, 193, 0)
+    ),
+    linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0));
+  background-size: 100% 0.1em, 0 0.1em;
+  background-position: 100% 100%, 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 400ms;
+}
+
+a:hover,
+a:focus {
+  background-size: 0 0.1em, 100% 0.1em;
+}
+
+.right,
+.left {
+  margin-left: 20px;
+  margin-right: 40px;
+}
+
+.right p,
+.left p {
+  margin: 0;
+}
+
+.right p label,
+.left p label {
+  display: block;
+  margin-top: 10px;
+}
+
+h2 {
+  font-family: "Inter Tight", serif;
+  font-size: large;
+  margin-top: 10px;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+ul li {
+  margin-top: 10px;
+}
+
+@media (max-height: 470px) {
+  .text {
+    display: none;
+  }
+}
+
+@media (max-width: 900px), (max-height: 470px) {
+  .text {
+    margin: auto;
+  }
+
+  img {
+    display: none;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .form {
+    width: 100%;
+    height: 80%;
+  }
+
+  .inputs {
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 195px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .confirms {
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    height: 80%;
+  }
+
+  .right,
+  .left {
+    width: 300px;
+  }
+}
+
+p {
+  position: relative;
+}
+
+#email-error,
+#name-error,
+#password-error,
+#lastname-error,
+#number-error,
+#cnfpassword-error {
+  color: chocolate;
+  font-size: 10px;
+  font-weight: 500;
+  display: flex;
+  position: absolute;
+  margin-top: 1px;
+
+  width: 100%;
+  direction: rtl;
+}
+
+footer {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  height: 32px;
+  width: 100%;
+  position: fixed;
+  margin-top: 50%;
+  content: "This is a footer";
+  color: white;
+  font-size: 12px;
+  align-self: flex-end;
+  align-items: center;
+}
+
+footer p {
+}
+
+/*---------------------v checkbox animation v--------------*/
+
+input[type="checkbox"] {
+  order: -1;
+  appearance: none;
+  border: 1px solid grey;
+  background-color: white;
+  border-radius: 3px;
+  height: 13px;
+  width: 13px;
+  margin-top: 2.2px;
+  margin-right: 4px;
+  cursor: pointer;
+  margin-left: -10px;
+}
+
+input[type="checkbox"]:user-invalid {
+  border: 1.5px solid rgba(208, 89, 89, 0.571);
+}
+
+input[type="checkbox"]:hover {
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+}
+
+input[type="checkbox"]::before {
+  display: block;
+
+  content: " ";
+  background-color: black;
+  border-radius: 3px;
+  height: 85%;
+  width: 85%;
+
+  transform: translate(0.77px, 0.77px) scale(0);
+  transform-origin: center;
+  transition: all 0.3s ease-in;
+}
+
+input[type="checkbox"]:checked::before {
+  transform: translate(0.77px, 0.77px) scale(1);
+  transition: all 0.3s cubic-bezier(0.25, 0.25, 0.2, 1.29);
+}
+
+input[type="checkbox"]:hover::before {
+  transform: translate(0.77px, 0.77px) scale(0.7);
+  transition: all 0.3s cubic-bezier(0.25, 0.25, 0.2, 1.29);
+}
+
+input[type="checkbox"]:active::before {
+  transform: translate(0.77px, 0.77px) scale(0.83);
+  transition: all 0.3s cubic-bezier(0.25, 0.25, 0.2, 1.29);
+}
+
+input[type="checkbox"]:checked::before {
+  transform: translate(0.77px, 0.77px) scale(0.9);
+  transition: all 0.3s cubic-bezier(0.25, 0.25, 0.02, 2.5);
+}
+/*---------------------^ checkbox animation ^--------------*/
